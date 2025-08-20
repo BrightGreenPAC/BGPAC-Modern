@@ -12,6 +12,7 @@
   --radius:18px; --radius-sm:12px;
   --shadow:0 10px 40px rgba(0,0,0,.08);
   --gutter:22px;
+  --focus-ring: 0 0 0 3px rgba(126,217,87,.55), 0 0 0 6px rgba(0,0,0,.06);
 
   /* Spacing scale */
   --space-0:0; --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
@@ -27,7 +28,7 @@
 ---------------------------- */
 html,body{height:100%}
 body{
-  margin:0; background:var(--bg); color:var(--ink);
+  margin:0; background:var(--bg, #FAFAF7); color:var(--ink, #1C1C1C);
   font:16px/1.6 Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 }
 h1,h2,h3,h4,h5,h6{font-family:"League Spartan", system-ui, sans-serif; margin:0 0 var(--space-3)}
@@ -90,7 +91,7 @@ pre{background:#111; color:#f2f2f2; padding:14px; border-radius:12px; overflow:a
   transition: transform .05s ease, filter .15s ease, box-shadow .15s ease;
 }
 .btn:active{transform:translateY(1px)}
-.btn:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(126,217,87,.55), 0 0 0 6px rgba(0,0,0,.06)}
+.btn:focus-visible{outline:none; box-shadow: var(--focus-ring)}
 .btn-lg{padding:14px 22px; font-size:16px}
 .btn-sm{padding:8px 12px; font-size:13px}
 
@@ -164,7 +165,11 @@ pre{background:#111; color:#f2f2f2; padding:14px; border-radius:12px; overflow:a
 /* ---------------------------
    Navigation / Header
 ---------------------------- */
-.site-header{position:sticky; top:0; z-index:30; background:var(--black); color:#fff; border-bottom:1px solid rgba(255,255,255,.08)}
+.site-header{
+  position:sticky; top:0; z-index:30;
+  background:var(--black, #1C1C1C); color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08)
+}
 .nav{max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px}
 .brand{font:700 22px/1 "League Spartan"; letter-spacing:.4px}
 .links{display:flex; gap:12px; align-items:center}
@@ -232,6 +237,55 @@ tr:hover td{background:#faf9f2}
 
 .toast{position:fixed; right:16px; bottom:16px; background:#111; color:#fff; padding:12px 16px; border-radius:12px; box-shadow:var(--shadow); display:none; z-index:70}
 .toast.on{display:block}
+
+/* ---------------------------
+   Footer (NEW)
+---------------------------- */
+.site-footer{
+  background: var(--black, #1C1C1C);
+  color:#fff;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding: var(--space-8) 0;
+}
+.site-footer .footer-wrap{
+  display:grid;
+  gap:var(--gutter);
+}
+@media (min-width:768px){
+  .site-footer .footer-wrap{
+    grid-template-columns: 1fr auto;
+    align-items:center;
+  }
+}
+.site-footer .footer-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font:800 20px/1 "League Spartan", system-ui, sans-serif;
+  letter-spacing:.4px;
+}
+.site-footer .footer-links{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-self:end;
+}
+.site-footer .footer-links a{
+  color:#fff;
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:6px;
+  font-weight:600;
+}
+.site-footer .footer-links a:hover{
+  background:rgba(255,255,255,.10);
+}
+.site-footer .fineprint{
+  grid-column:1 / -1;
+  font-size:12px;
+  color:rgba(255,255,255,.75);
+  margin-top:var(--space-2);
+}
 
 /* ---------------------------
    Motion / Accessibility
