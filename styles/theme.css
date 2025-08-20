@@ -1,4 +1,3 @@
-
 /* Bright Green PAC — Uplift & Energy Theme (League Spartan + Roboto)
    Drop-in stylesheet for prototypes and static pages.
    Colors: Lime #7ED957, Violet #8E44AD, Yellow #F4D03F, Black #1C1C1C
@@ -186,7 +185,8 @@ pre{background:#111; color:#f2f2f2; padding:14px; border-radius:12px; overflow:a
 ---------------------------- */
 .hero{border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); position:relative}
 .hero .img{
-  background-image: linear-gradient(180deg, rgba(126,217,87,.40), rgba(244,208,63,.40)), url('hero-image.jpg');
+  /* NOTE: Next.js public asset reference (root-relative) */
+  background-image: linear-gradient(180deg, rgba(126,217,87,.40), rgba(244,208,63,.40)), url('/hero-image.jpg');
   background-size:cover; background-position:center; min-height:220px;
 }
 .hero .text{padding:var(--space-6); background:#fff}
